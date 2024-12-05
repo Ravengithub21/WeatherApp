@@ -3,6 +3,7 @@ const dataContainer = document.getElementById("generate-data");
 const searchBtn = document.getElementById("search");
 const apiKey = "7889ff25b0dbaa918b3723aaea579abd";
 const weatherIcon = document.querySelector(".weather-icon");
+const allCities = [];
 
 async function getWeatherData(city) {
   try {
@@ -14,6 +15,15 @@ async function getWeatherData(city) {
     let wind = data.wind.speed;
     let temperature = data.main.temp;
     let humidity = data.main.humidity;
+    allCities.push({
+      city,
+      weatherIcon,
+      wind,
+      temperature,
+      humidity,
+    });
+    console.log(allCities);
+
     renderHtml(weatherIcon, wind, temperature, humidity);
     console.log(data);
   } catch (error) {
@@ -21,12 +31,17 @@ async function getWeatherData(city) {
   }
 }
 
-function renderHtml(weatherIcon, wind, temperature, humidity) {
+function renderHtml() {
   let html = "";
-  html += `<img src="https://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="weathericon">
-          <span>Wind: ${wind.toFixed(0)} km/h</span>
-          <span>Temperature: ${temperature.toFixed(0)}°C</span>
-          <span>Humidity: ${humidity}</span>`;
+  for (let i = 0; i < allCities.length; i++) {
+    html += `<img src="https://openweathermap.org/img/wn/${
+      allCities[i].weatherIcon
+    }@2x.png" alt="weathericon">
+          <span>Wind: ${allCities[i].wind.toFixed(0)} km/h</span>
+          <span>Temperature: ${allCities[i].temperature.toFixed(0)}°C</span>
+          <span>Humidity: ${allCities[i].humidity}</span>`;
+  }
+
   dataContainer.innerHTML = html;
 }
 
