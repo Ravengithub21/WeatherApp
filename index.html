@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="w-screen h-screen flex">
+    <div
+      id="weather-container"
+      class="border rounded-2xl border-black w-[450px] h-[400px] m-auto"
+    >
+      <div class="weather-info flex justify-center mt-20">
+        <div class="flex flex-col">
+          <div class="flex gap-4 mx-auto">
+            <input
+              id="weather-input"
+              type="text"
+              class="p-2 rounded-xl outline-none placeholder:font-bold"
+              placeholder="City..."
+            />
+            <button id="search" class="font-bold">SEARCH</button>
+          </div>
+          <div
+            id="generate-data"
+            class="flex flex-col justify-center items-center mt-12 font-bold text-2xl"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
